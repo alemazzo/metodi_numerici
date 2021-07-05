@@ -23,7 +23,7 @@ def bisezione(f, a, b, tol):
         return None, 0, []
 
     max_iterazioni = int(math.ceil(math.log2((b - a) / tol)))
-    it, xk = 1, []
+    it, xk = 0, []
     while it < max_iterazioni and abs(b - a) >= tol + np.spacing(1) * max(abs(a), abs(b)):
         x = a + (b - a) / 2  # Calcolo il punto medio
         xk.append(x)

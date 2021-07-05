@@ -23,7 +23,7 @@ def regula_falsi(f, a, b, tol, nmax):
         return None, 0, []
 
     fx = fa
-    it, xk = 1, []
+    it, xk = 0, []
     while it < nmax and abs(b - a) >= tol + np.spacing(1) * max(abs(a), abs(b)) and abs(fx) >= tol:
         x = 1
         xk.append(x)
