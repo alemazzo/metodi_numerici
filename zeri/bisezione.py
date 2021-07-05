@@ -1,4 +1,5 @@
 import math
+
 import numpy as np
 
 
@@ -11,8 +12,11 @@ def bisezione(f, a, b, tol):
     :param tol: la tollerenza
     :return: (zero della funzione, numero di iterazioni, iterazioni)
     """
-    def sign(value): return math.copysign(1, value)
-    fa, fb = f(a), f(b)
+
+    def sign(value):
+        return math.copysign(1, value)
+
+    fa, fb, x = f(a), f(b), None
 
     if sign(fa) == sign(fb):
         print("sign(fa) == sign(fb) => Non applicabile")
@@ -20,7 +24,7 @@ def bisezione(f, a, b, tol):
 
     max_iterazioni = int(math.ceil(math.log2((b - a) / tol)))
     it, xk = 1, []
-    while it < max_iterazioni and abs(b - a) >= tol + np.spacing(1)*max(abs(a), abs(b)):
+    while it < max_iterazioni and abs(b - a) >= tol + np.spacing(1) * max(abs(a), abs(b)):
         x = a + (b - a) / 2  # Calcolo il punto medio
         xk.append(x)
         fx = f(x)
@@ -29,5 +33,4 @@ def bisezione(f, a, b, tol):
         else:
             b, fb = x, fx
         it += 1
-
     return x, it, xk
