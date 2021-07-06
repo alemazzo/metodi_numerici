@@ -120,9 +120,7 @@ def solve_lu(L, U, P, b):
     :return:
     """
     y, flag = solve_l(L, np.dot(P, b))
-    if not flag:
-        return [], flag
-    return solve_u(U, y)
+    return solve_u(U, y) if flag else [], False
 
 
 def solve(A, B, pivot):
