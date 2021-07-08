@@ -5,12 +5,12 @@ import numpy as np
 
 def zeri_di_chebyshev(a, b, n):
     """
-    Ottieni i nodi di Chebyshev nell'intervallo specificato.
+    Nodi di Chebyshev per il calcolo del polinomio interpolatore nell'intervallo specificato.
 
     :param a: lower bound del range
     :param b: upper bound del range
-    :param n: il numero di punto (grado del polinomio + 1)
-    :return: nodi di Chebyshev dell'intervallo [a, b]
+    :param n: il numero di punti (grado del polinomio + 1)
+    :return: i nodi di Chebyshev dell'intervallo [a, b]
     """
     t1 = (a + b) / 2
     t2 = (b - a) / 2
@@ -22,10 +22,11 @@ def zeri_di_chebyshev(a, b, n):
 
 def lagrange(x, k):
     """
+    Polinomio di Lagrange di indice k
 
-    :param x:
-    :param k:
-    :return:
+    :param x: ascisse dei nodi da interpolare
+    :param k: indice del polinomio di Lagrange
+    :return: coefficenti del k-esimo polinomio di Lagrange calcolato nelle ascisse dei nodi da interpolare
     """
     if k == 0:
         zeri = x[1:]
@@ -39,11 +40,12 @@ def lagrange(x, k):
 
 def interpola(x, y, punti):
     """
+    Interpolazione dei nodi composti dalle coordinate (x, y) calcolato nei punti specificati.
 
-    :param x:
-    :param y:
-    :param punti:
-    :return:
+    :param x: le ascisse dei nodi da interpolare
+    :param y: le ordinate dei nodi da interpolare
+    :param punti: i punti in cui valutare il polinomio interpolatore
+    :return: il valore del polinomio interpolatore nei punti specificati
     """
     n, m = x.size, punti.size
     L = np.zeros((n, m))
