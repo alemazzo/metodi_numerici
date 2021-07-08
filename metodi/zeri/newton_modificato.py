@@ -17,7 +17,7 @@ def newton_modificato(f, df, x0, m, tolx, tolf, nmax):
 
     def delta(value): return f(value) / df(value) if df(value) > np.spacing(1) else exit("Derivata nulla")
 
-    def prossimax(value): return x - m * delta(value)
+    def prossimax(value): return value - m * delta(value)
 
     x = prossimax(x0)
     fx = f(x)
