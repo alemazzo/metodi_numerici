@@ -1,1 +1,1 @@
-from .interpolazione import *
+from .polinomiale import *
