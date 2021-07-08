@@ -3,13 +3,15 @@ import numpy as np
 
 def newton(f, df, x0, tolx, tolf, nmax):
     """
+    Algoritmo di Newton per il calcolo dello zero di una funzione.
 
-    :param f:
-    :param df:
-    :param tolx:
-    :param tolf:
-    :param nmax:
-    :return:
+    :param f: la funzione di cui calcolare lo zero
+    :param df: la derivata della funzione di cui calcolare lo zero
+    :param x0: il valore di innesco
+    :param tolx: la tolleranza sull'incremento
+    :param tolf: la tolleranza sul valore della funzione
+    :param nmax: il numero massimo di iterazioni
+    :return: (zero della funzione, numero di iterazioni, iterazioni)
     """
 
     def delta(value): return f(value) / df(value) if df(value) > np.spacing(1) else exit("Derivata nulla")

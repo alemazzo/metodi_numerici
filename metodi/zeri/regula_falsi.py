@@ -5,13 +5,14 @@ import numpy as np
 
 def regula_falsi(f, a, b, tol, nmax):
     """
+    Algoritmo di regula falsi per il calcolo dello zero di una funzione.
 
-    :param f:
-    :param a:
-    :param b:
-    :param tol:
-    :param nmax:
-    :return:
+    :param f: la funzione di cui trovare lo zero
+    :param a: il valore minimo del dominio
+    :param b: il valore massimo del dominio
+    :param tol: la tolleranza
+    :param nmax: il numero massimo di iterazioni
+    :return: (zero della funzione, numero di iterazioni, iterazioni)
     """
 
     def sign(value):

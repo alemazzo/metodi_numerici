@@ -3,15 +3,16 @@ import numpy as np
 
 def newton_modificato(f, df, x0, m, tolx, tolf, nmax):
     """
+    Algoritmo di Newton modificato per il calcolo dello zero di una funzione con molteplicità multipla.
 
-    :param f:
-    :param df:
-    :param x0:
-    :param m:
-    :param tolx:
-    :param tolf:
-    :param nmax:
-    :return:
+    :param f: la funzione di cui calcolare lo zero
+    :param df: la derivata della funzione di cui calcolare lo zero
+    :param x0: il valore di innesco
+    :param m: molteplicità dello zero
+    :param tolx: la tolleranza sull'incremento
+    :param tolf: la tolleranza sul valore della funzione
+    :param nmax: il numero massimo di iterazioni
+    :return: (zero della funzione, numero di iterazioni, iterazioni)
     """
 
     def delta(value): return f(value) / df(value) if df(value) > np.spacing(1) else exit("Derivata nulla")

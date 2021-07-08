@@ -6,7 +6,8 @@ import numpy as np
 def bisezione(f, a, b, tol):
     """
     Algoritmo di Bisezione per il calcolo dello zero di una funzione.
-    :param f: la funzione
+
+    :param f: la funzione di cui calcolare lo zero
     :param a: il valore minimo dell'intervallo
     :param b: il valore massimo dell'intervallo
     :param tol: la tollerenza
