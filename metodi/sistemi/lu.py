@@ -125,7 +125,7 @@ def solve_lu(L, U, P, b):
     :return: il vettore x delle incognite e il flag di successo
     """
     y, flag = solve_l(L, np.dot(P, b))
-    return solve_u(U, y) if flag else [], False
+    return solve_u(U, y)
 
 
 def solve(A, B, pivot):
