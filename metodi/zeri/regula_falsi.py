@@ -18,6 +18,8 @@ def regula_falsi(f, a, b, tol, nmax):
     def sign(value):
         return math.copysign(1, value)
 
+    def prossimax(x): return a - fa * (b - a) / (fb - fa)
+
     fa, fb, x = f(a), f(b), None
     if sign(fa) == sign(fb):
         print("sign(fa) == sign(fb) => Non applicabile")
@@ -26,7 +28,7 @@ def regula_falsi(f, a, b, tol, nmax):
     fx = fa
     it, xk = 0, []
     while it < nmax and abs(b - a) >= tol + np.spacing(1) * max(abs(a), abs(b)) and abs(fx) >= tol:
-        x = 1
+        x = prossimax(x)
         xk.append(x)
         fx = f(x)
         if sign(fx) == sign(fa):

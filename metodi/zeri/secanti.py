@@ -21,6 +21,7 @@ def secanti(f, x1, x0, tolx, tolf, nmax):
     while it < nmax and abs(fx) >= tolf and abs(delta(x, x1)) >= tolx * abs(x):
         temp = x
         x = prossimax(x, x1)
+        xk.append(x)
         fx = f(x)
         x1 = temp
         it += 1
