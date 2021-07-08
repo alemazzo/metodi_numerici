@@ -2,6 +2,14 @@ import numpy as np
 
 
 def trapezio(f, a, b, n=1):
+    """
+    Metodo del trapezio per il calcolo integrale
+    :param f: la funzione da integrare
+    :param a: il lowerbound di integrazione
+    :param b: l'upperbound di integrazione
+    :param n: il numero di sottointervalli da usare
+    :return: il valore dell'integrale approssimato
+    """
     h = (b - a) / n
     nodi = np.arange(a, b + h, h)
     fnodi = f(nodi)
@@ -11,12 +19,12 @@ def trapezio(f, a, b, n=1):
 
 def simpson(f, a, b, n=1):
     """
-
-    :param f:
-    :param a:
-    :param b:
-    :param n:
-    :return:
+    Metodo di Simpson per il calcolo integrale
+    :param f: la funzione da integrare
+    :param a: il lowerbound di integrazione
+    :param b: l'upperbound di integrazione
+    :param n: il numero di sottointervalli da usare
+    :return: il valore dell'integrale approssimato
     """
     h = (b - a) / (2 * n)
     nodi = np.arange(a, b + h, h)
@@ -27,14 +35,15 @@ def simpson(f, a, b, n=1):
 
 def integrale(f, a, b, tol, metodo, nmax=2048):
     """
-
-    :param f:
-    :param a:
-    :param b:
-    :param tol:
-    :param metodo:
-    :param nmax:
-    :return:
+    Calcolo dell'integrale approssimato della funzione f tramite il metodo specificato
+    e con la scelta del numero di sottointervalli adattiva in base alla tolleranza.
+    :param f: la funzione da integrare
+    :param a: il lowerbound di integrazione
+    :param b: l'upperbound di integrazione
+    :param tol: la tolleranze
+    :param metodo: il metodo da utilizzare per l'integrazione
+    :param nmax: il massimo numero di sottointervalli
+    :return: il valore dell'integrale approssimato con la tolleranza specificata
     """
     err = 1
     n = 1
