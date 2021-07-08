@@ -16,7 +16,7 @@ def zeri_di_chebyshev(a, b, n):
     t2 = (b - a) / 2
     x = np.zeros((n,))
     for k in range(n):
-        x[k] = t1 + t2 * np.cos((math.pi * (2 * k + 1)) / (2 * n))
+        x[k] = t1 + t2 * np.cos((math.pi * (2 * k + 1)) / (2 * n))  # funzione per il calcolo dei nodi di Chebyshev
     return x
 
 
@@ -28,13 +28,15 @@ def lagrange(x, k):
     :param k: indice del polinomio di Lagrange
     :return: coefficenti del k-esimo polinomio di Lagrange calcolato nelle ascisse dei nodi da interpolare
     """
+
+    # Seleziono tutte le x tranne la k-esima
     if k == 0:
         zeri = x[1:]
     else:
         zeri = np.append(x[:k], x[k + 1:])
 
     numeratore = np.poly(zeri)
-    denominatore = np.polyval(numeratore, x[k])
+    denominatore = np.polyval(numeratore, x[k])  # il denominatore è uguale al numeratore valutato in x[k]
     return numeratore / denominatore
 
 

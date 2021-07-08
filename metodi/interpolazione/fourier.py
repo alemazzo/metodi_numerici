@@ -15,17 +15,16 @@ def fourier(f, t, fs, filtro):
                    [lambda freq: np.abs(freq) > 10])
     :return: i valori della funzione filtrata nel linespace da 0 a t con t * fs punti
     """
-    d = 1 / fs
-    n = t * fs
-    delta = 1 / t
+    n = t * fs  # numero di campioni
+    delta = 1 / t  # passo di campionamento nel dominio di Fourier
 
-    x = np.linspace(0, t, n)
-    y = f(x)
+    x = np.linspace(0, t, n)  # dominio temporale
+    y = f(x)  # campionamento del segnale rumoroso nel dominio temporale
 
-    frequenze = np.arange(-fs / 2, fs / 2, delta)
-    polinomio = fftshift(fft(y))
+    frequenze = np.arange(-fs / 2, fs / 2, delta)  # range delle frequenze del segnale
+    polinomio = fftshift(fft(y))  # coefficenti del polinomio di Fourier
 
-    indici = filtro(frequenze)
-    polinomio[indici] = 0
+    indici = filtro(frequenze)  # filtro le frequenze
+    polinomio[indici] = 0  # applico i filtri ai coefficenti del polinomio di Fourier
 
-    return ifft(ifftshift(polinomio))
+    return ifft(ifftshift(polinomio))  # ricalcolo il valore della funzione filtrata usando l'inversa di Fourier
