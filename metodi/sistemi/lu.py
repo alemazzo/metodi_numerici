@@ -3,10 +3,11 @@ import numpy as np
 
 def solve_l(L, b):
     """
+    Risoluzione di un sistema lineare triangolare inferiore con procedura di sostituzioni in avanti.
 
-    :param L:
-    :param b:
-    :return:
+    :param L: la matrice triangolare inferiore
+    :param b: il vettore dei termini noti
+    :return: il vettore x delle incognite e il flag di successo
     """
     m, n = L.shape
 
@@ -27,10 +28,11 @@ def solve_l(L, b):
 
 def solve_u(U, b):
     """
+    Risoluzione di un sistema lineare triangolare superiore con procedura di sostituzioni all'indietro.
 
-    :param U:
-    :param b:
-    :return:
+    :param U: la matrice triangolare superiore
+    :param b: il vettore dei termini noti
+    :return: il vettore x delle incognite e il flag di successo
     """
     m, n = U.shape
 
@@ -51,9 +53,10 @@ def solve_u(U, b):
 
 def fattorizzazione_lu_no_pivot(A):
     """
+    Fattorizzazione LU di una matrice senza l'utilizzo del pivoting parziale
 
-    :param A:
-    :return:
+    :param A: la matrice da fattorizzare (quadrata)
+    :return: le matrici L, U ed il flag di successo
     """
     m, n = A.shape
     if m != n:
@@ -77,9 +80,10 @@ def fattorizzazione_lu_no_pivot(A):
 
 def fattorizzazione_lu_pivot(A):
     """
+    Fattorizzazione LU di una matrice con l'utilizzo del pivoting parziale
 
-    :param A:
-    :return:
+    :param A: la matrice da fattorizzare (quadrata)
+    :return: le matrici L, U, P ed il flag di successo
     """
 
     def swap_rows(M, r1, r2):
@@ -112,12 +116,13 @@ def fattorizzazione_lu_pivot(A):
 
 def solve_lu(L, U, P, b):
     """
+    Risoluzione di un sistema lineare che è stato fattorizzato con le matrici L, U e P.
 
-    :param L:
-    :param U:
-    :param P:
-    :param b:
-    :return:
+    :param L: la matrice L
+    :param U: la matrice U
+    :param P: la matrice P (nel caso di fattorizzazione senza pivot sarà una matrice identità)
+    :param b: il vettore dei termini noti
+    :return: il vettore x delle incognite e il flag di successo
     """
     y, flag = solve_l(L, np.dot(P, b))
     return solve_u(U, y) if flag else [], False
@@ -125,11 +130,12 @@ def solve_lu(L, U, P, b):
 
 def solve(A, B, pivot):
     """
+    Solve generico di un sistema lineare anche a più dimensioni.
 
-    :param A:
-    :param B: deve avere i vettori nelle colonne
-    :param pivot:
-    :return:
+    :param A: la matrice A
+    :param B: la matrice contente i vettori dei termini noti nelle colonne
+    :param pivot: flag indicante se si vuole utilizzare il pivoting parziale o meno
+    :return: la matrice risultante X con i vettori delle incognite nelle colonne
     """
     L, U, P, flag = fattorizzazione_lu_pivot(A) if pivot else fattorizzazione_lu_no_pivot(A)
     if min(B.shape) == 1:
