@@ -31,7 +31,7 @@ def simpson(f, a, b, n=1):
     h = (b - a) / (2 * n)  # dimensione di ogni sottointervallo considerando che simpson usa un polinomio di grado 2
     nodi = np.arange(a, b + h, h)  # nodi che dividono il range
     fnodi = f(nodi)  # valore della funzione nei nodi divisori
-    I = (h / 3) * (fnodi[0] + 2 * np.sum(fnodi[2::2]) + 4 * np.sum(fnodi[1::2]) + fnodi[2 * n])  # integrale risutante
+    I = (h / 3) * (fnodi[0] + 2 * np.sum(fnodi[2:2*n:2]) + 4 * np.sum(fnodi[1:2*n:2]) + fnodi[2 * n])  # integrale risutante
     return I
 
 
