@@ -59,6 +59,8 @@ for n in range(5, 11):
     b = np.dot(A.T, np.ones((n, 1)))
     c = np.dot(np.dot(A, A), np.ones((n, 1)))
     
+    print(f"b = {b}")
+    
     s1 = lusolve(A, b).T
     print(f"soluzione 1 = {s1}")
     
