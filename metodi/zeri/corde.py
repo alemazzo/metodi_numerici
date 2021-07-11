@@ -11,12 +11,12 @@ def corde(f, m, x0, tolx, tolf, nmax):
     :return: (zero della funzione, numero di iterazioni, iterazioni)
     """
 
-    def prossimax(prev): return prev - f(x0) / m
+    def prossimax(x): return x - f(x) / m
 
     x = prossimax(x0)
     fx = f(x)
     it, xk = 1, [x]
-    while it < nmax and abs(fx) >= tolf and abs(f(x0) / m) >= tolx * abs(x):
+    while it < nmax and abs(fx) >= tolf and abs(f(x) / m) >= tolx * abs(x):
         x = prossimax(x)
         xk.append(x)
         fx = f(x)
